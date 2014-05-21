@@ -8,7 +8,7 @@
 
   <body>
 
-    <h1>All Movies</h1>
+    <h1 name="top">All Movies</h1>
 
       <!--Display an array of hashes of all movies and all information-->
       <!--<%= @all_movies %>-->
@@ -17,13 +17,22 @@
 
       <ul>
       <% @titles_array.each do |title| %>
-        <li>
-          <a href="<%= url("") %>">
-            <%= title %>
-          </a>
-        </li>
+
+        <% @all_movies.each do |movie_hash| %>
+          <% if movie_hash[:title] == title %>
+
+            <li>
+              <a href="<%= url("/movies/#{movie_hash[:id]}") %>">
+                <%= title %>
+              </a>
+            </li>
+
+          <% end %>
+        <% end %>
       <% end %>
     </ul>
+
+    <a href="#top">Back to Top</a>
 
 
   </body>
@@ -32,4 +41,3 @@
 
 
 
-<a href="<%= url("/position/#{position}") %>">

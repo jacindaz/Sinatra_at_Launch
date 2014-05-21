@@ -24,6 +24,19 @@ def title_array(movies_hashes, attribute)
 end
 
 
+#input any key/attribute and return the hash that matches the target
+#for ex: if this hash has a key :title that matches the target, return that entire hash
+def get_movie_hash(movies_hashes, attribute, target)
+  movies_hashes.each do |movie_hash|
+    if movie_hash[attribute] == target
+      return movie_hash
+    else
+      puts "Error! Reached else statement in get_movie_hash"
+    end
+  end
+end
+
+
 #ROUTES AND VIEWS------------------------------------------------------
 get '/' do
   @title = "All Movies Page"
@@ -34,13 +47,12 @@ get '/' do
 end
 
 
-get '/team/:team_name' do
-  @title = "Team Homepage"
-  @team = params[:team_name]
-  @team_contacts = load_contacts('lackp_starting_rosters.csv')
+get '/movies/:movie_id' do
+  @title = "Individual Movie"
+  @movie_id = params[:movie_id]
+  @all_movies = load_movies("movies.csv")
 
-  @teamhash = filter_by(@team_contacts, @team, :team)
-  #@teamhash = team_array(@team_contacts, @team)
+  @movie_info = get_movie_hash(@all_movies, :id, @movie_id)
 
-  erb :team
+  erb :show
 end
