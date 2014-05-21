@@ -25,7 +25,9 @@
           <%= "#{nested_hash[:first_name]} #{nested_hash[:last_name]}" %>
           </td>
           <td>
-          <%= "#{nested_hash[:position]}" %>
+            <a href="<%= url("/position/#{nested_hash[:position]}") %>">
+              <%= "#{nested_hash[:position]}" %>
+            </a>
           </td>
         </tr>
         <% end %>
