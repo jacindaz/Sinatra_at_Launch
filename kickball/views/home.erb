@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <title>Homepage</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+
+  <body>
+
+    <h1>Welcome to the League of Cool Kickball Professionals Webpage!</h1>
+
+    <br><br>
+
+    <h2>Please select a team:</h2>
+
+    <ul>
+
+      <% @team_names.each do |name| %>
+        <li>
+          <a href="<%= url("/team/#{name}") %>">
+            <%= "#{name}" %>
+          </a>
+        </li>
+      <% end %>
+
+    </ul>
+
+  </body>
+
+</html>

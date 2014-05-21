@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <title>Basic HTML Page</title>
+    <link rel="stylesheet" href="home.css" />
+  </head>
+
+  <body>
+    <h1>TODO list</h1>
+
+    <ul>
+      <% @task.each do |task| %>
+        <li><%= task %></li>
+      <% end %>
+    </ul>
+  </body>
+</html>
