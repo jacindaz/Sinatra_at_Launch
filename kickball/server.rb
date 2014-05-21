@@ -22,6 +22,16 @@ def team_array(array_of_hashes, team_name)
   final_array
 end
 
+def position_array(array_of_hashes, position_name)
+  final_array = []
+  array_of_hashes.each do |nested_hash|
+    if nested_hash[:position] == position_name
+      final_array << nested_hash
+    end
+  end
+  final_array
+end
+
 
 
 #ROUTES AND VIEWS------------------------------------------------------
@@ -59,6 +69,17 @@ get '/team/:team_name' do
   @teamhash = team_array(@team_contacts, @team)
 
   erb :team
+end
+
+
+get '/position/:position_name' do
+  @title = "Team Members by Position"
+  @position = params[:position_name]
+  @team_contacts_pos = load_contacts('lackp_starting_rosters.csv')
+
+  @positionhash = position_array(@team_contacts_pos, @position)
+
+  erb :position
 end
 
 
