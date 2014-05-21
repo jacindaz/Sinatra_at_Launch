@@ -8,6 +8,7 @@ def load_contacts(file_name)
   CSV.foreach(file_name, headers: true, header_converters: :symbol) do |contact|
     contacts << contact.to_hash
   end
+
   contacts
 end
 
@@ -22,10 +23,6 @@ def team_array(array_of_hashes, team_name)
 end
 
 
-#VARIABLES--------------------------------------------------
-@@contacts = load_contacts('lackp_starting_rosters.csv')
-@teamhash = team_array(@@contacts, @team)
-
 
 #ROUTES AND VIEWS------------------------------------------------------
 get('/styles.css'){ css :styles }
@@ -33,9 +30,10 @@ get('/styles.css'){ css :styles }
 
 get '/' do
   @title = "Home Page"
+  @contacts = load_contacts('lackp_starting_rosters.csv')
 
   @team_names = []
-  @@contacts.each do |team_member_hash|
+  @contacts.each do |team_member_hash|
     if !@team_names.include?(team_member_hash[:team])
       @team_names << team_member_hash[:team]
     end
@@ -48,7 +46,9 @@ end
 get '/team/:team_name' do
   @title = "Team Homepage"
   @team = params[:team_name]
-  @teamhash = team_array(@@contacts, @team)
+  @team_contacts = load_contacts('lackp_starting_rosters.csv')
+
+  @teamhash = team_array(@team_contacts, @team)
 
   erb :team
 end
@@ -56,6 +56,7 @@ end
 
 get '/allteams' do
   @title = "All Team Info"
+  @all_teams = load_contacts('lackp_starting_rosters.csv')
   erb :allteams
 end
 

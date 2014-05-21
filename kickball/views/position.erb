@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <title>All Team Info</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+
+  <body>
+
+    <h1>Welcome to the <%= "#{@teamhash[0][:team]}" %> team page!</h1>
+
+      <!--Displays the entire team array of hashes-->
+      <!--<%= @teamhash %>-->
+      <br>
+
+    <table>
+      <tr>
+        <th>Full Name</th>
+        <th>Position</th>
+      </tr>
+      <% @teamhash.each do |nested_hash| %>
+        <tr>
+          <td>
+          <%= "#{nested_hash[:first_name]} #{nested_hash[:last_name]}" %>
+          </td>
+          <td>
+          <%= "#{nested_hash[:position]}" %>
+          </td>
+        </tr>
+        <% end %>
+    </table>
+
+    <br><br>
+
+
+    <a href="..">Go back home</a>
+
+
+  </body>
+
+</html>
+
