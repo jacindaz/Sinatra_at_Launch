@@ -14,6 +14,7 @@ end
 get '/' do
   @title = "Home Page"
   "You've reached the home page!"
+
 end
 
 

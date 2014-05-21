@@ -9,5 +9,12 @@
     <h1>
       The task is <%= @task %>
     </h1>
+
+    <form action="/tasks" method="post">
+      <label for="task_name">New Task:</label>
+      <input type="text" id="task_name" name="task_name" />
+      <input type="submit" />
+    </form>
+
   </body>
 </html>

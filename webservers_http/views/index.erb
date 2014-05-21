@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
   <head>
     <title>Basic HTML Page</title>
@@ -10,9 +9,15 @@
     <h1>TODO list</h1>
 
     <ul>
-      <% @task.each do |task| %>
+      <% @tasks.each do |task| %>
         <li><%= task %></li>
       <% end %>
     </ul>
+
+    <form action="/tasks" method="post">
+      <label for="task_name">New Task:</label>
+      <input type="text" id="task_name" name="task_name" />
+      <input type="submit" />
+    </form>
   </body>
 </html>
