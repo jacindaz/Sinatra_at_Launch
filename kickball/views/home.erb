@@ -12,19 +12,34 @@
 
     <br><br>
 
-    <h2>The LCKP Teams:</h2>
+<!--Team Names-->
+    <div class="half_width float_left">
+      <h2>The LCKP Teams:</h2>
+      <ul>
+        <% @team_names.each do |name| %>
+          <li>
+            <a href="<%= url("/team/#{name}") %>">
+              <%= "#{name}" %>
+            </a>
+          </li>
+        <% end %>
+      </ul>
+    </div>
 
-    <ul>
 
-      <% @team_names.each do |name| %>
-        <li>
-          <a href="<%= url("/team/#{name}") %>">
-            <%= "#{name}" %>
-          </a>
-        </li>
-      <% end %>
-
-    </ul>
+<!--Positions-->
+    <div class="half_width float_left left_padding">
+      <h2>By Position:</h2>
+      <ul>
+        <% @positions.each do |position| %>
+          <li>
+            <a href="<%= url("/team/#{position}") %>">
+              <%= "#{position}" %>
+            </a>
+          </li>
+        <% end %>
+      </ul>
+    </div>
 
   </body>
 

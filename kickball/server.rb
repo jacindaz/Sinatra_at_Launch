@@ -25,7 +25,8 @@ end
 
 
 #ROUTES AND VIEWS------------------------------------------------------
-get('/styles.css'){ css :styles }
+#need to figure out why this syntax doesn't work
+#get('/styles.css'){ css :styles }
 
 
 get '/' do
@@ -36,6 +37,13 @@ get '/' do
   @contacts.each do |team_member_hash|
     if !@team_names.include?(team_member_hash[:team])
       @team_names << team_member_hash[:team]
+    end
+  end
+
+  @positions = []
+  @contacts.each do |team_member_hash|
+    if !@positions.include?(team_member_hash[:position])
+      @positions << team_member_hash[:position]
     end
   end
 
