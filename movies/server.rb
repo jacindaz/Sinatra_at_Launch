@@ -8,19 +8,7 @@ def load_movies(file_name)
   CSV.foreach(file_name, headers: true, header_converters: :symbol) do |movie|
     movies << movie.to_hash
   end
-  movies
-end
-
-def title_array(movies_hashes, attribute)
-  movie_attribute = []
-  attribute_str = attribute.to_s
-  movies_hashes.each do |movie_hash|
-    title = movie_hash[attribute]
-    if !movie_attribute.include?(attribute_str)
-      movie_attribute << movie_hash[attribute]
-    end
-  end
-  movie_attribute.sort_by {|title| title.downcase}
+  movies.sort_by{|movie| movie[:title].downcase}
 end
 
 
@@ -41,7 +29,6 @@ end
 get '/' do
   @title = "All Movies Page"
   @all_movies = load_movies("movies.csv")
-  @titles_array = title_array(@all_movies, :title)
 
   erb :index
 end

@@ -8,18 +8,28 @@
 
   <body>
 
-    <h1 name="top">Movie Page</h1>
+    <h1>Movie Page</h1>
 
       <!--Display an array of hashes of all movies and all information-->
       <!--<%= @all_movies %>-->
       <!--<%= @titles_array %>-->
+      <!--<%= @movie_info %>-->
 
-      <%= @movie_info %>
+      <table>
+        <% @movie_info.each do |key,value| %>
+          <% if value != nil %>
+            <tr>
+              <th><%= key.capitalize %></th>
+              <td><%= value %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </table>
 
       <br><br>
 
 
-    <a href="#top">Back to Top</a>
+    <a href="/../..">Back to Home</a>
 
 
   </body>

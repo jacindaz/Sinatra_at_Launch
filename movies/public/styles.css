@@ -21,11 +21,13 @@ th {
   width: 300px;
   font-size: 1.2em;
   text-align:center;
-  border-bottom: 1px solid black;
 }
 
 
-td { text-align: center;}
+td {
+  text-align: left;
+  margin-left: 10px;
+}
 
 li {
   padding-bottom: 10px;

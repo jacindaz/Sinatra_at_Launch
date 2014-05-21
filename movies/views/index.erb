@@ -16,20 +16,15 @@
 
 
       <ul>
-      <% @titles_array.each do |title| %>
 
-        <% @all_movies.each do |movie_hash| %>
-          <% if movie_hash[:title] == title %>
-
-            <li>
-              <a href="<%= url("/movies/#{movie_hash[:id]}") %>">
-                <%= title %>
-              </a>
-            </li>
-
-          <% end %>
-        <% end %>
+      <% @all_movies.each do |movie_hash| %>
+        <li>
+          <a href="<%= url("/movies/#{movie_hash[:id]}") %>">
+            <%= movie_hash[:title] %>
+          </a>
+        </li>
       <% end %>
+
     </ul>
 
     <a href="#top">Back to Top</a>
