@@ -15,9 +15,9 @@
       <!--<%= @titles_array %>-->
 
 
-      <ul>
+      <ol>
 
-      <% @all_movies.each do |movie_hash| %>
+      <% @movies.each do |movie_hash| %>
         <li>
           <a href="<%= url("/movies/#{movie_hash[:id]}") %>">
             <%= movie_hash[:title] %>
@@ -25,9 +25,18 @@
         </li>
       <% end %>
 
-    </ul>
+    </ol>
 
-    <a href="#top">Back to Top</a>
+    <p>
+      <a href="/movies?page=<% @page_number - 1 %>" class="no_underline">
+        Previous Page
+      </a> |
+      <a href="/movies?page=<%= @page_number %>" class="no_underline">
+        Next Page
+      </a>
+    </p>
+
+    <a href="../">Back Home</a>
 
 
   </body>

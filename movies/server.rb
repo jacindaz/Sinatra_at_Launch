@@ -1,6 +1,8 @@
 require 'sinatra'
 require 'rubygems'
 require 'csv'
+require 'pry'
+
 
 #METHODS--------------------------------------------------------------
 def load_movies(file_name)
@@ -18,19 +20,42 @@ def get_movie_hash(movies_hashes, attribute, target)
   movies_hashes.each do |movie_hash|
     if movie_hash[attribute] == target
       return movie_hash
-    else
-      puts "Error! Reached else statement in get_movie_hash"
     end
   end
 end
 
+def get_movies(movies_per_page, page_num, array_of_movies)
+  page_num = page_num.to_i
+  range_start = (page_num - 1) * movies_per_page
+  if page_num <= 1
+    return array_of_movies[0..movies_per_page - 1]
+  else
+    return array_of_movies[range_start..range_start + (movies_per_page - 1)]
+  end
+end
+
+
 
 #ROUTES AND VIEWS------------------------------------------------------
-get '/' do
+get '/movies' do
   @title = "All Movies Page"
   @all_movies = load_movies("movies.csv")
 
+  if params[:page].to_i <= 1
+    @page_number = 1
+  else
+    @page_number = params[:page]
+  end
+
+  @movies = get_movies(15, @page_number, @all_movies)
+  @page_number = @page_number.to_i + 1
+
   erb :index
+end
+
+
+get "/" do
+  redirect "/movies"
 end
 
 
@@ -40,6 +65,7 @@ get '/movies/:movie_id' do
   @all_movies = load_movies("movies.csv")
 
   @movie_info = get_movie_hash(@all_movies, :id, @movie_id)
+
 
   erb :show
 end
