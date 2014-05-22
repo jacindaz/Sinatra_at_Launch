@@ -14,6 +14,19 @@
       <!--<%= @all_movies %>-->
       <!--<%= @titles_array %>-->
 
+      <form action="/movies" method="get">
+        <label for="query">Search: </label>
+        <input type="text" name="query" id="query" />
+        <input type="submit" value="Search" />
+      </form>
+
+      <% @movies.each do |movie_hash| %>
+        <% if movie_hash[:title].include?(@query) %>
+          <a href="<%= url("/movies/#{movie_hash[:id]}") %>">
+            <%= movie_hash[:title] %>
+          </a>
+        <% end %>
+      <% end %>
 
       <ol>
 
@@ -31,7 +44,7 @@
       <a href="/movies?page=<% @page_number - 1 %>" class="no_underline">
         Previous Page
       </a> |
-      <a href="/movies?page=<%= @page_number %>" class="no_underline">
+      <a href="/movies?page=<%= @page_number + 1 %>" class="no_underline">
         Next Page
       </a>
     </p>
