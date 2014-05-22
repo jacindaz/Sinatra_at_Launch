@@ -23,13 +23,15 @@
       <br>
 
       <% if @query != nil %>
-        <% @movies.each do |movie_hash| %>
-          <% if movie_hash[:title].include?(@query) %>
-            <a href="<%= url("/movies/#{movie_hash[:id]}") %>">
+        <ul>
+        <% @all_movies.each do |movie_hash| %>
+          <% if movie_hash[:title].include?(@query.to_s) == true %>
+            <li><a href="/movies/<%= movie_hash[:id] %>">
               <%= movie_hash[:title] %>
-            </a>
+            </a></li>
           <% end %>
         <% end %>
+        </ul>
 
       <% else %>
         <ol>
