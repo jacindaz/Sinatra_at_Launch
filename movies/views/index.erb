@@ -20,25 +20,28 @@
         <input type="submit" value="Search" />
       </form>
 
-      <% @movies.each do |movie_hash| %>
-        <% if movie_hash[:title].include?(@query) %>
-          <a href="<%= url("/movies/#{movie_hash[:id]}") %>">
-            <%= movie_hash[:title] %>
-          </a>
+      <br>
+
+      <% if @query != nil %>
+        <% @movies.each do |movie_hash| %>
+          <% if movie_hash[:title].include?(@query) %>
+            <a href="<%= url("/movies/#{movie_hash[:id]}") %>">
+              <%= movie_hash[:title] %>
+            </a>
+          <% end %>
         <% end %>
+
+      <% else %>
+        <ol>
+          <% @movies.each do |movie_hash| %>
+            <li>
+              <a href="<%= url("/movies/#{movie_hash[:id]}") %>">
+                <%= movie_hash[:title] %>
+              </a>
+            </li>
+          <% end %>
+        </ol>
       <% end %>
-
-      <ol>
-
-      <% @movies.each do |movie_hash| %>
-        <li>
-          <a href="<%= url("/movies/#{movie_hash[:id]}") %>">
-            <%= movie_hash[:title] %>
-          </a>
-        </li>
-      <% end %>
-
-    </ol>
 
     <p>
       <a href="/movies?page=<% @page_number - 1 %>" class="no_underline">
