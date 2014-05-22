@@ -1,0 +1,58 @@
+body {
+  font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif
+  margin: auto;
+  width: auto;
+  margin: 0px 10%;
+}
+
+h1 {
+    color: purple;
+    margin:0px;
+    padding:0px;
+}
+
+ol,ul {
+  width:auto;
+  margin: 0px;
+  padding: 0px;
+  list-style-position: inside;
+}
+
+li {
+  padding: 15px 20px;
+}
+
+li .title {
+  font-size: 16px;
+  font-weight: 800;
+}
+
+li .text {
+  font-size: 12px;
+}
+
+ol li:nth-child(even) {
+  background-color: #E1EEF5;
+}
+ol li:nth-child(odd) {
+  background-color: #ACD2E6;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+
+.float_right { float: right; }
+.float_left { float: left; }
+
+.header {
+  width: auto;
+  height: 100px;
+  background-color: #F2D3EE;
+  text-align: center;
+  padding: 10px;
+}
+
+.vertical_align { vertical-align: center;}
