@@ -28,16 +28,17 @@
 
 
 <!--User chooses number of pages to display-->
-<h3>Choose the number of movies to display:</h3>
+<h4>Choose the number of movies to display:</h4>
 <div class="btn-group">
   <a href="/movies?page=<%= @page_number %>&display=10") %>">
-  <button type="button" class="btn btn-default">Display 10 movies</button></a>
+    <button type="button" class="btn btn-default">10</button>
+  </a>
   <a href="/movies?page=<%= @page_number %>&display=20") %>">
-  <button type="button" class="btn btn-default">20 movies</button>
-</a>
-<a href="/movies?page=<%= @page_number %>&display=30") %>">
-  <button type="button" class="btn btn-default">30 movies</button>
-</a>
+    <button type="button" class="btn btn-default">20</button>
+  </a>
+  <a href="/movies?page=<%= @page_number %>&display=30") %>">
+    <button type="button" class="btn btn-default">30</button>
+  </a>
 </div>
 
 <br><br>
@@ -61,7 +62,7 @@
 
 <!--If no queries, display movies based on num/pg to display-->
       <% else %>
-        <ol>
+        <ul>
           <% @movies.each do |movie_hash| %>
             <li>
               <a href="<%= url("/movies/#{movie_hash[:id]}") %>">
@@ -69,7 +70,7 @@
               </a>
             </li>
           <% end %>
-        </ol>
+        </ul>
       <% end %>
 
     <p>

@@ -41,13 +41,19 @@ get '/movies' do
   @title = "All Movies Page"
   @all_movies = load_movies("movies.csv")
   @query = params["query"]
-  @num_movies = params[:display].to_i
 
   if params[:page].to_i <= 1
     @page_number = 1
   else
     @page_number = params[:page].to_i
   end
+
+  if params[:display] == nil
+    @num_movies = 10
+  else
+    @num_movies = params[:display].to_i
+  end
+
 
   @movies = get_movies(@num_movies, @page_number, @all_movies)
 
