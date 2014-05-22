@@ -51,6 +51,8 @@ get '/movies' do
   @movies = get_movies(15, @page_number, @all_movies)
   @page_number = @page_number.to_i + 1
 
+  #binding.pry
+
   erb :index
 end
 

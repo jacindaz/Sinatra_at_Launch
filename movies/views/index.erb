@@ -29,6 +29,10 @@
             <li><a href="/movies/<%= movie_hash[:id] %>">
               <%= movie_hash[:title] %>
             </a></li>
+          <% elsif (movie_hash[:synopsis] != nil) && (movie_hash[:synopsis].include?(@query.to_s) == true) %>
+            <li><a href="/movies/<%= movie_hash[:id] %>">
+              <%= movie_hash[:title] %>
+            </a></li>
           <% end %>
         <% end %>
         </ul>
