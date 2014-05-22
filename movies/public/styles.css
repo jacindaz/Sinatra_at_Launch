@@ -13,20 +13,23 @@ h1, h2, h3, h4 {
 table {
   border: 1px;
   color: black;
-  border-spacing:5px;
+  border-spacing:15px;
   text-align: center;
+  margin-bottom: 15px;
 }
 
 th {
   width: 300px;
   font-size: 1.2em;
   text-align:center;
+  vertical-align: top;
+  border-bottom: 1px solid black;
 }
-
 
 td {
   text-align: left;
   margin-left: 10px;
+  border-bottom: 1px solid black;
 }
 
 li {

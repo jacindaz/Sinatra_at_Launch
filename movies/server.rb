@@ -60,12 +60,12 @@ end
 
 
 get '/movies/:movie_id' do
-  @title = "Individual Movie"
+
   @movie_id = params[:movie_id]
   @all_movies = load_movies("movies.csv")
-
   @movie_info = get_movie_hash(@all_movies, :id, @movie_id)
 
+  @title = "#{@movie_info[:title]}"
 
   erb :show
 end
