@@ -43,6 +43,8 @@ a {
   color: black;
 }
 
+.underline { text-decoration: underline;}
+
 
 .float_right { float: right; }
 .float_left { float: left; }

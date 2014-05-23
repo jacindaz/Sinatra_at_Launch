@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title><%= @title %></title>
+
+    <link rel="stylesheet" href="styles.css">
+  </head>
+
+  <body>
+    <header class="header">
+      <img src="dilbert-slacker.jpg" class="float_left" width=100>
+      <a href="/">
+        <h1 class="vertical_align">Slacker News</h1>
+      </a>
+      <p class="text">new | comments | ask | jobs | submit</a>
+    </header>
+
+    <hr>
+
+    <h2><%= @title %> to Slacker News</h2>
+
+
+    <form action="/article" method="post">
+      <p>
+        <label for="title">Article Title</label>
+        <input type="text" id="title" name="title"/>
+      </p>
+      <p>
+        <label for="url">URL</label>
+        <input type="text" id="url" name="url"/>
+      </p>
+      <p>
+        <label for="description">Description</label>
+        <textarea id="description" name="description"/></textarea>
+      </p>
+
+      <input type="submit" />
+    </form>
+
+
+  </body>
+</html>
