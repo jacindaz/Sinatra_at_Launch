@@ -23,16 +23,16 @@
 
     <form action="/article" method="post">
       <p>
-        <label for="title">Article Title</label>
-        <input type="text" id="title" name="title"/>
+        <label for="title" placeholder="title">Article Title</label>
+        <input type="text" id="title" name="title" required aria-required=”true”>
       </p>
       <p>
         <label for="url">URL</label>
-        <input type="text" id="url" name="url"/>
+        <input type="text" id="url" name="url" required aria-required=”true”/>
       </p>
       <p>
         <label for="description">Description</label>
-        <textarea id="description" name="description"/></textarea>
+        <textarea id="description" name="description" required aria-required=”true”/></textarea>
       </p>
 
       <input type="submit" />
