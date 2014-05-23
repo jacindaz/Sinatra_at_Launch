@@ -58,3 +58,17 @@ a {
 }
 
 .vertical_align { vertical-align: center;}
+
+/*optional class to highlight required fields*/
+input:required {
+    background:hsl(180, 50%, 90%);
+    border:1px solid #999;
+}
+
+input, textarea {
+  width: 300px;
+}
+label {
+  width: 100px;
+  display: inline-block;
+}
