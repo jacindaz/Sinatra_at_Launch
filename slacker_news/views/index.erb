@@ -22,18 +22,21 @@
 
     <ol>
 
+      <% @articles.each do |article_line| %>
 
-      <li>
-      <span class="title">
-        <a href="https://www.firebase.com/blog/2013-08-15-firebase-leaves-beta-today.html">
-          Firebase Leaves Beta Today (firebase.com)
-        </a>
-      </span>
-      <span class="text">
-        <a href="https://www.firebase.com/blog/2013-08-15-firebase-leaves-beta-today.html">
-        https://www.firebase.com/blog/2013-08-15-firebase-leaves-beta-today.html</a><br>
-      63 points by lyime 56 minutes ago | 17 comments</span>
-      </li>
+        <li>
+        <span class="title">
+          <a href="<%= article_line[:url] %>" target="_blank">
+            <%= article_line[:title] %>
+          </a>
+        </span><br>
+        <span class="text">
+          <%= article_line[:description] %></a>
+        </span>
+
+        </li>
+
+      <% end %>
 
 
      </ol>

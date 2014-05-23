@@ -31,17 +31,15 @@ get '/new_article' do
 end
 
 post '/article' do
-  @title = params[:title]
+  @article_title = params[:title]
   @url = params[:url]
   @description = params[:description]
 
   #binding.pry
 
   File.open('articles.csv', 'a') do |file|
-    file.puts("#{@title}, #{@url}, #{@description}")
+    file.puts("#{@article_title}, #{@url}, #{@description}")
   end
-
-
 
   redirect '/'
 end
