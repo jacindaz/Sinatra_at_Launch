@@ -12,25 +12,37 @@ def load_contacts(file_name)
   contacts
 end
 
-def team_array(array_of_hashes, team_name)
-  final_array = []
-  array_of_hashes.each do |nested_hash|
-    if nested_hash[:team] == team_name
-      final_array << nested_hash
+#returns an array of hashes, with hashes that contain
+#a specific attribute, such as :team or :position
+def filter_by(players, target, attribute)
+  selected = []
+  players.each do |player|
+    if player[attribute] == target
+      selected << player
     end
   end
-  final_array
+  selected
 end
 
-def position_array(array_of_hashes, position_name)
-  final_array = []
-  array_of_hashes.each do |nested_hash|
-    if nested_hash[:position] == position_name
-      final_array << nested_hash
-    end
-  end
-  final_array
-end
+# def team_array(array_of_hashes, team_name)
+#   final_array = []
+#   array_of_hashes.each do |nested_hash|
+#     if nested_hash[:team] == team_name
+#       final_array << nested_hash
+#     end
+#   end
+#   final_array
+# end
+
+# def position_array(array_of_hashes, position_name)
+#   final_array = []
+#   array_of_hashes.each do |nested_hash|
+#     if nested_hash[:position] == position_name
+#       final_array << nested_hash
+#     end
+#   end
+#   final_array
+# end
 
 
 
@@ -38,12 +50,11 @@ end
 #need to figure out why this syntax doesn't work
 #get('/styles.css'){ css :styles }
 
-
 get '/' do
   @title = "Home Page"
   @contacts = load_contacts('lackp_starting_rosters.csv')
 
-  @team_names = []
+
   @contacts.each do |team_member_hash|
     if !@team_names.include?(team_member_hash[:team])
       @team_names << team_member_hash[:team]
@@ -66,7 +77,8 @@ get '/team/:team_name' do
   @team = params[:team_name]
   @team_contacts = load_contacts('lackp_starting_rosters.csv')
 
-  @teamhash = team_array(@team_contacts, @team)
+  @teamhash = filter_by(@team_contacts, @team, :team)
+  #@teamhash = team_array(@team_contacts, @team)
 
   erb :team
 end
@@ -77,7 +89,9 @@ get '/position/:position_name' do
   @position = params[:position_name]
   @team_contacts_pos = load_contacts('lackp_starting_rosters.csv')
 
-  @positionhash = position_array(@team_contacts_pos, @position)
+  @positionhash = filter_by(@team_contacts_pos, @position, :position)
+
+  #@positionhash = position_array(@team_contacts_pos, @position)
 
   erb :position
 end
